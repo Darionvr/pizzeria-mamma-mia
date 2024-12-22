@@ -50,7 +50,7 @@ ul {
   padding: 0;
   display: flex;
   gap: 1rem;
- 
+
 }
 
 
@@ -64,7 +64,7 @@ nav a {
 
 }
 
-nav a:hover{
+nav a:hover {
   color: var(--NaranjoClaro);
 }
 
@@ -91,57 +91,65 @@ nav a:hover{
 
 }
 
-.total:hover{
+.total:hover {
   background-color: var(--NaranjoClaro);
   cursor: pointer;
 }
+
 .total a {
   color: var(--Blanco);
 }
-.total a:hover{
+
+.total a:hover {
   color: var(--Blanco);
 }
 
 /***************************** PIZZA CARD *****************************/
 
 
-.card{
+.card {
   background-color: white;
   padding: 1.5rem;
   border-radius: 15px;
   min-width: 200px;
   max-width: 300px;
   box-shadow: -4px 5px 0px rgba(186, 126, 116, 0.353);
-  
-  
+
+
 }
-.fotopizza{
+
+.fotopizza {
   width: 100%;
-  
+
 }
-.fotopizza img{
+
+.fotopizza img {
   width: 100%;
   border-radius: 15px;
 }
-.nombre, .precio{
+
+.nombre,
+.precio {
   font-weight: 700;
   font-size: 1.2rem;
   margin: .5rem;
   color: var(--GrisOscuro);
   font-family: oswald;
 }
-.ingredientes{
+
+.ingredientes {
   color: var(--Grismedio);
   text-transform: capitalize;
   margin: .5rem;
 }
 
-.botones{
+.botones {
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
 }
-.verMas{
+
+.verMas {
   border: solid 1px var(--Naranjo);
   background-color: white;
   color: var(--NaranjoClaro);
@@ -152,7 +160,7 @@ nav a:hover{
   border-radius: 25px;
 }
 
-.anadir{
+.anadir {
   border: none;
   background-color: var(--Naranjo);
   color: var(--Blanco);
@@ -162,13 +170,15 @@ nav a:hover{
   border-radius: 25px;
   font-size: 1rem;
 }
-.verMas:hover{
+
+.verMas:hover {
   border: solid 1px var(--NaranjoClaro);
   cursor: pointer;
   background-color: var(--Blanco);
   color: var(--Naranjo);
 }
-.anadir:hover{
+
+.anadir:hover {
   background-color: var(--NaranjoClaro);
   color: white;
   cursor: pointer;
@@ -176,7 +186,7 @@ nav a:hover{
 
 /***************************** FOOTER *****************************/
 
-.redes{
+.redes {
   background-color: var(--Naranjo);
   height: 350px;
   display: grid;
@@ -184,12 +194,14 @@ nav a:hover{
   justify-content: center;
   align-items: center;
 }
-.logofooter{
-text-align: center;
-justify-self: center;
-color: var(--Blanco);
+
+.logofooter {
+  text-align: center;
+  justify-self: center;
+  color: var(--Blanco);
 }
-.mammafooter{
+
+.mammafooter {
   display: flex;
   flex-direction: column;
   font-size: 3rem;
@@ -197,22 +209,26 @@ color: var(--Blanco);
   margin: 0;
   font-family: Oswald;
 }
-.iconos{
+
+.iconos {
   display: flex;
   flex-direction: column;
   justify-self: center;
   gap: 1rem;
 }
-.enlace{
+
+.enlace {
   font-size: 1rem;
   font-weight: 600;
 }
-.iconos a{
+
+.iconos a {
   text-decoration: none;
   color: var(--Blanco);
   font-size: 2rem;
 }
-.info{
+
+.info {
   background-color: var(--NaranjoClaro);
   text-align: center;
   color: var(--Blanco);
@@ -220,28 +236,172 @@ color: var(--Blanco);
   font-weight: 300;
 }
 
+
+/***************************** MODAL *****************************/
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.475);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100%;
+}
+
+.modal-contenido {
+  color: var(--GrisOscuro);
+  padding: 3rem;
+  background-color: white;
+  border-radius: 10px;
+  width: 20rem;
+  height: 20rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+
+
+}
+/***************************** FORM *****************************/
+.form {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px;
+  
+  padding: 1.5rem;
+
+}
+
+.validaciones {
+  position: relative;
+  margin-bottom: .5rem;
+  
+
+
+}
+
+input {
+
+  font-weight: 600;
+  border-radius: 5px;
+  padding: .8rem;
+  border: solid 1px var(--NaranjoClaro);
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+.alert {
+  color: var(--Naranjo);
+
+  font-size: .6rem;
+  font-weight: 500;
+  font-style: italic;
+  text-align: right;
+  margin-right: .4rem;
+  margin-bottom: 0;
+
+
+}
+
+.error {
+  position: absolute;
+  z-index: 1;
+  right: 20px;
+  top: 0%;
+  color: var(--Naranjo);
+
+}
+
+
+
+.registrar {
+  font-family: Roboto;
+  background-color: var(--Naranjo);
+  color: white;
+  letter-spacing: 1px;
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: -4px 5px 0px rgba(186, 126, 116, 0.353);
+  font-weight: 600;
+  margin-top: .5rem;
+  width: 100%;
+}
+
+.registrar:hover {
+  background-color: var(--NaranjoClaro);
+  cursor: pointer;
+}
+
+.registrate {
+  text-align: center;
+  color: var(--GrisOscuro);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.registrate span {
+  font-family: Oswald;
+  font-size: 1.5 rem;
+  font-weight: 700;
+}
+
+.botonCerrarModal {
+  position: absolute;
+  cursor: pointer;
+  z-index: 1500;
+  color: var(--Naranjo);
+  font-size: 1.5rem;
+  padding: .5rem;
+  top: -1rem;
+  right: 1rem;
+  
+
+}
+
+/***************************** REGISTRO OK *****************************/
+
+.checkIcon{
+  font-size: 4rem;
+  color: var(--Naranjo);
+  margin: 0;
+
+}
+
+
+/***************************** MEDIA QUERIES *****************************/
+
 @media (max-width:768px) {
-  .anadir, .verMas{
+
+  .anadir,
+  .verMas {
     padding: .5rem 1.5rem;
   }
 
-  .redes{
+  .redes {
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
-  .iconos{
+  .iconos {
     flex-direction: row;
     justify-content: center;
     text-align: center;
   }
 
-  .enlace{
+  .enlace {
     font-size: .8rem;
   }
-  .direccion{
-    margin-top: 0
-    ;
+
+  .direccion {
+    margin-top: 0;
   }
 }
