@@ -62,7 +62,7 @@ export const Nav = () => {
       ) : null}
 
       {abrirLogin == true ? (
-        <div className='modal'>
+        <div className='modal' >
           <div className="modal-contenido">
             <p className='botonCerrarModal' onClick={cerrarModalLogin}>{cruz}</p>
             <Login />

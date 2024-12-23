@@ -52,7 +52,7 @@ const Register = () => {
                     </>
                 ) : (
                     <><h2 className='registrate'>
-                        Regístrate en <span>Mamma Mía</span>
+                        Regístrate en <br /><span>Mamma Mía</span>
                     </h2><form noValidate onSubmit={validarInput}>
                             <div className="validaciones">
                                 <input type="text" placeholder='Nombre' id='nombreInput' value={nombre} required onChange={(e) => setNombre(e.target.value)} />
