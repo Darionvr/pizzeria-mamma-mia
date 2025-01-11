@@ -136,11 +136,17 @@ nav a:hover {
   color: var(--GrisOscuro);
   font-family: oswald;
 }
-
+.card ul{
+  flex-wrap: wrap;
+  gap: .5rem;
+}
 .ingredientes {
   color: var(--Grismedio);
   text-transform: capitalize;
-  margin: .5rem;
+  padding: .5rem;
+  flex-wrap: wrap;
+  border: solid .5px var(--NaranjoClaro);
+  border-radius: 10px;
 }
 
 .botones {
@@ -251,6 +257,7 @@ nav a:hover {
   height: 100%;
   box-sizing: border-box;
   padding: 1rem;
+  overflow-y: auto;
 }
 
 
@@ -378,6 +385,109 @@ input {
 }
 
 
+/***************************** CARRITO  *****************************/
+
+  .cart{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 3rem;
+    width: min-content;
+    gap: 2rem;
+  }
+
+.tituloCart{
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--Naranjo);
+  
+}
+
+.pedido{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  position: relative; 
+  border-bottom: solid 1px rgb(216, 216, 216);
+  padding-bottom: 2rem;
+  
+}
+.imagenPedido{
+  width: 8rem;
+  height: fit-content;
+  border-radius: 10px;
+}
+
+.sumaResta{
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: .5rem;
+  
+}
+
+.sumaResta:hover{
+  cursor: pointer;
+  background-color:var(--Grismedio);
+  color: var(--Blanco);
+}
+
+.botones{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.detalle{
+  text-align: left;
+  margin-right: 3rem;
+}
+
+.nombrePedido{
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--GrisOscuro);
+  font-family: oswald;
+  margin: 0;
+}
+
+.precioPedido{
+  color: var(--GrisOscuro);
+  font-size: .9rem;
+  
+}
+
+.cerrarPedido{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.pagoCart{
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(240, 240, 240);
+  border-radius: 10px;
+  color: var(--GrisOscuro);
+  padding: 1rem;
+  gap: 2rem;
+  text-align: center;
+}
+
+.totalCart{
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.totalmonto{
+  font-weight: 700;
+  font-size: 1.2rem;
+  
+}
 /***************************** MEDIA QUERIES *****************************/
 
 @media (max-width:768px) {
