@@ -4,7 +4,6 @@ header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   font-family: Oswald;
-  background-color: 204, 58, 0;
   background-color: var(--Naranjo);
   color: var(--Blanco);
   margin: 0;
@@ -487,6 +486,11 @@ input {
   font-weight: 700;
   font-size: 1.2rem;
   
+}
+/***************************** useEffect *****************************/
+
+.noScroll{
+  overflow: hidden;
 }
 /***************************** MEDIA QUERIES *****************************/
 

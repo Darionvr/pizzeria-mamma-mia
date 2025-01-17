@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import Register from './register'
 import Login from './login'
+
 
 export const Nav = () => {
 
@@ -31,6 +32,21 @@ export const Nav = () => {
   const cerrarModalLogin = () => {
     setAbrirLogin(false)
   }
+
+useEffect(() =>{
+
+if(abrirRegister || abrirLogin){
+  document.body.classList.add('noScroll')
+}else{
+  document.body.classList.remove('noScroll')
+}
+
+return () => {
+  document.body.classList.remove('noScroll')
+};
+
+}, [abrirLogin, abrirRegister]);
+
 
   return (
     <>
