@@ -11,7 +11,7 @@ export const Header = () => {
                 <p>Desde $5.950</p>
             </div>
             
-        <img src="src/assets/imgs/Header 2.jpeg" alt=""/>
+        <img src="public/imgs/Header 2.jpeg" alt=""/>
            
         </header>
     )

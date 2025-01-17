@@ -30,7 +30,7 @@ const Home = () => {
           name={pizza.name}
           price={pizza.price.toLocaleString('de-DE')}
           ingredients={pizza.ingredients}
-          img={`src/assets/imgs/${pizza.name}.jpeg`}
+          img={`public/imgs/${pizza.name}.jpeg`}
           key={pizza.id}
         />))}
 

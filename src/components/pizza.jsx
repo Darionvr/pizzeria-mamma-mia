@@ -32,7 +32,7 @@ const Pizza = () => {
           name={descripcion.name}
           price={descripcion.price.toLocaleString('de-DE')}
           ingredients={descripcion.ingredients}
-          img={`src/assets/imgs/${descripcion.name}.jpeg`}
+          img={`public/imgs/${descripcion.name}.jpeg`}
           descripcion={descripcion.desc}
           key={descripcion.id}
         />

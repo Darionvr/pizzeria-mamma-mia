@@ -56,20 +56,20 @@ export const pizzaCart = [
     name: "Napolitana",
     price: 5950,
     count: 1,
-    img: "src/assets/imgs/napolitana.jpeg",
+    img: "public/imgs/napolitana.jpeg",
   },
   {
     id: "P002",
     name: "Española",
     price: 7250,
     count: 1,
-    img: "src/assets/imgs/española.jpeg",
+    img: "public/imgs/española.jpeg",
   },
   {
     id: "P003",
     name: "Salame",
     price: 5990,
     count: 1,
-    img: "src/assets/imgs/salame.jpeg",
+    img: "public/imgs/salame.jpeg",
   },
 ];
