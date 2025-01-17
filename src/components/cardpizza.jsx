@@ -15,7 +15,7 @@ export const CardPizza = ({ name, price, ingredients, img, descripcion}) => {
                 </div>
 
                 <p className="nombre"> {name} </p>
-                <p className="precio">${price.toLocaleString('de-DE')}</p>
+                <p className="precio">${price}</p>
                 <p> {descripcion}</p>
                 <ul>
                    {ingredients.map(ingre => <li className='ingredientes' key={ingre}> {ingre} </li>)} 

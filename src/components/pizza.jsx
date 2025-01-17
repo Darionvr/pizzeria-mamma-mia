@@ -5,6 +5,7 @@ const Pizza = () => {
 
 
   const [descripcion, setDescripcion] = useState({})
+  const [isLoading, setIsLoading] = useState(true);
 
 
   const getDescripcion = async () => {
@@ -12,29 +13,31 @@ const Pizza = () => {
     const data = await response.json();
     console.log(data);
     setDescripcion(data);
-    
+    setIsLoading(false);
+
   };
 
   useEffect(() => {
     getDescripcion();
-  },[]);
+  }, []);
 
 
 
 
   return (
     <>
+      {isLoading ? (<p>Cargando...</p>) : (
+        
+        <CardPizza
+          name={descripcion.name}
+          price={descripcion.price.toLocaleString('de-DE')}
+          ingredients={descripcion.ingredients}
+          img={`src/assets/imgs/${descripcion.name}.jpeg`}
+          descripcion={descripcion.desc}
+          key={descripcion.id}
+        />
+      )}
 
-    <CardPizza
-              name={descripcion.name}
-              price={descripcion.price}
-              ingredients={descripcion.ingredients}
-              img={`src/assets/imgs/${descripcion.name}.jpeg`}
-              descripcion={descripcion.desc}
-              key={descripcion.id}
-            />
-
-      
     </>
   )
 }
