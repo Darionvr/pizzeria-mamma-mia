@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Header from './header'
-import CardPizza from './cardpizza'
+import Header from '../components/header'
+import CardPizza from '../components/cardpizza'
+
 
 
 const Home = () => {
@@ -23,7 +24,8 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      
+      <Header/>
 
       <main>
         {isLoading ? (<p>Cargando...</p>) : (menu.map(pizza => <CardPizza

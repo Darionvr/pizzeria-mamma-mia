@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import Register from './register'
-import Login from './login'
+import Register from '../pages/register'
+import Login from '../pages/login'
+import { Link } from "react-router-dom"
+import Profile from '../pages/Profile'
 
 
 export const Nav = () => {
@@ -13,39 +15,12 @@ export const Nav = () => {
   const pizza = <FontAwesomeIcon icon={faPizzaSlice} />
   const cruz = <FontAwesomeIcon icon={faXmark} />
 
+  
   const total = 25000;
   const token = false;
 
-  const [abrirRegister, setAbrirRegister] = useState(false)
-  const [abrirLogin, setAbrirLogin] = useState(false)
 
-  const abrirModalRegistro = () => {
-    setAbrirRegister(true)
-  }
-  const cerrarModalRegistro = () => {
-    setAbrirRegister(false)
-  }
 
-  const abrirModalLogin = () => {
-    setAbrirLogin(true)
-  }
-  const cerrarModalLogin = () => {
-    setAbrirLogin(false)
-  }
-
-useEffect(() =>{
-
-if(abrirRegister || abrirLogin){
-  document.body.classList.add('noScroll')
-}else{
-  document.body.classList.remove('noScroll')
-}
-
-return () => {
-  document.body.classList.remove('noScroll')
-};
-
-}, [abrirLogin, abrirRegister]);
 
 
   return (
@@ -56,36 +31,20 @@ return () => {
         <p className='logo'> {pizza} Mamma Mía </p>
 
         <ul>
-          <li><a href="#"> Home </a></li>
+          <li> <Link to="/"> Home</Link></li>
           <li className={token == false ? 'noRegistrado' : null}><a href="#"> Profile</a></li>
           <li className={token == false ? 'noRegistrado' : null}><a href="#" > Logout</a></li>
-          <li className={token == true ? 'noRegistrado' : null}><a href="#" onClick={abrirModalRegistro} >Register</a></li>
-          <li className={token == true ? 'noRegistrado' : null}><a href="#" onClick={abrirModalLogin} >Login</a></li>
+          <li className={token == true ? 'noRegistrado' : null}> <Link to="/register"> Register</Link> </li>
+          <li className={token == true ? 'noRegistrado' : null}> <Link to='/login'> Login </Link> </li>
 
         </ul>
-
-        <button className='total'><a href="#">{carrito} ${total.toLocaleString('de-DE')}</a></button>
+        <div className='profile'>
+          
+         <Link to='/cart'>  <button className='total' > {carrito} ${total.toLocaleString('de-DE')} </button></Link> 
+          <Profile />
+        </div>
       </nav>
-
-
-      {abrirRegister == true ? (
-        <div className='modal'>
-          <div className="modal-contenido">
-            <p className='botonCerrarModal' onClick={cerrarModalRegistro}>{cruz}</p>
-            <Register />
-          </div>
-        </div>
-      ) : null}
-
-      {abrirLogin == true ? (
-        <div className='modal' >
-          <div className="modal-contenido">
-            <p className='botonCerrarModal' onClick={cerrarModalLogin}>{cruz}</p>
-            <Login />
-          </div>
-        </div>
-      ) : null}
-
+      
 
     </>
   )

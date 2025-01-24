@@ -1,9 +1,14 @@
-import Home from './components/home'
+import Home from './pages/home'
 import Footer from './components/footer'
 import Nav from './components/nav'
 import './App.css'
-import Cart from './components/cart'
-import Pizza from './components/pizza'
+import Cart from './pages/cart'
+import Pizza from './pages/pizza'
+import { Route, Routes } from 'react-router-dom'
+import Register from './pages/register'
+import Login from './pages/login'
+import NotFound from './pages/NotFound'
+import Profile from './pages/Profile'
 
 
 function App() {
@@ -12,10 +17,53 @@ function App() {
   return (
     <>
  <Nav />
- <Home /> 
- <Cart />
- <Pizza/>
+
+ <Routes>
+  <Route
+  path="/"
+  element={<Home />}
+  />
+   <Route
+  path="/register"
+  element={<Register />}
+  />
+ <Route
+  path="/login"
+  element={<Login />}
+  />
+   <Route
+  path="/cart"
+  element={<Cart />}
+  />
+ <Route
+  path="/pizza/p001"
+  element={<Pizza />}
+  />
+
+<Route
+  path="/profile"
+  element={<Profile />}
+  />
+
+<Route
+  path="/pizza/:id"
+  element={<Pizza/>}
+  />
+
+<Route
+  path="/404"
+  element={<NotFound />}
+  />
+
+<Route
+  path="*"
+  element={<NotFound />}
+  />
+
+ </Routes> 
+
  <Footer />
+
     </>
   )
 

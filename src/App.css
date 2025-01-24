@@ -10,6 +10,7 @@ header {
   max-height: 650px;
   align-items: center;
   overflow: hidden;
+  justify-content: center;
 
 }
 
@@ -50,6 +51,7 @@ ul {
   display: flex;
   gap: 1rem;
 
+
 }
 
 
@@ -87,6 +89,8 @@ nav a:hover {
   border: none;
   background-color: var(--Naranjo);
   box-shadow: -4px 5px 0px rgba(107, 32, 21, 0.353);
+  height: 4rem;
+  color: var(--Blanco);
 
 }
 
@@ -192,7 +196,8 @@ nav a:hover {
 /***************************** FOOTER *****************************/
 
 .redes {
-  background-color: var(--Naranjo);
+  background-color: var(--Blanco);
+  color: var(--Naranjo);
   height: 350px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -203,12 +208,14 @@ nav a:hover {
 .logofooter {
   text-align: center;
   justify-self: center;
-  color: var(--Blanco);
+  color: var(--Naranjo);
+
 }
 
 .mammafooter {
   display: flex;
   flex-direction: column;
+ 
   font-size: 3rem;
   font-weight: 800;
   margin: 0;
@@ -229,12 +236,12 @@ nav a:hover {
 
 .iconos a {
   text-decoration: none;
-  color: var(--Blanco);
+  color: var(--Naranjo);
   font-size: 2rem;
 }
 
 .info {
-  background-color: var(--NaranjoClaro);
+  background-color: var(--Naranjo);
   text-align: center;
   color: var(--Blanco);
   padding: 2rem;
@@ -253,10 +260,11 @@ nav a:hover {
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   box-sizing: border-box;
-  padding: 1rem;
   overflow-y: auto;
+  
+
 }
 
 
@@ -273,8 +281,19 @@ nav a:hover {
   align-content: center;
   justify-content: center;
   text-align: center;
+  justify-self: center;
+ box-shadow: -4px 5px 0px rgba(135, 71, 60, 0.808);
 
 }
+
+/***************************** REGISTER Y LOGIN  *****************************/
+
+
+.modalHeader{
+  
+}
+
+
 /***************************** FORM *****************************/
 .form {
   background-color: white;
@@ -374,6 +393,10 @@ input {
 
 }
 
+.botonCerrarModal a{
+  color: var(--Naranjo);
+}
+
 /***************************** REGISTRO OK *****************************/
 
 .checkIcon{
@@ -389,16 +412,36 @@ input {
   .cart{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background-color: white;
-    padding: 3rem;
+    box-sizing: border-box;
+    padding: 2rem;
     width: min-content;
-    gap: 2rem;
+    gap: .8rem;
+    justify-self: right;
+    height: 100%;
+
+  
   }
+
+.carritoVacio{
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 10rem;
+  
+}
+.iconoVacio{
+  color: var(--Naranjo);
+  font-size: 2rem;
+
+}
 
 .tituloCart{
   font-size: 2rem;
   font-weight: 600;
   color: var(--Naranjo);
+  margin: .8rem 0 .8rem 0;
   
 }
 
@@ -487,11 +530,76 @@ input {
   font-size: 1.2rem;
   
 }
-/***************************** useEffect *****************************/
 
-.noScroll{
-  overflow: hidden;
+/***************************** Profile  *****************************/
+.profile{
+  display: flex;
+  margin-left: 1rem;
+  align-items: center;
 }
+
+
+.logeado{
+  display: flex;
+  flex-direction: column;
+  
+  
+}
+.logeado p{
+  margin: 0;
+  font-size: .9rem;
+  
+}
+.correo{
+  font-weight: 600;
+  color: var(--Naranjo);
+}
+.cerrarSesion{
+  color: var(--Grismedio);
+}
+.cerrarSesion:hover{
+  cursor: pointer;
+  color: var(--GrisOscuro);
+}
+.usuario{
+  display: flex;
+  align-items: center;
+  margin-left: .5rem;
+  color: var(--GrisOscuro);
+  font-size: 1rem;
+  border: solid 2px var(--GrisOscuro);
+  border-radius: 100%;
+  padding: .5rem;
+  height: 15px;
+  width: 15px;
+  
+}
+
+/***************************** 404 *****************************/
+
+.errorPizza{
+  height: clamp(6rem, 15vw, 15rem);
+  font-size: clamp(6rem, 15vw, 15rem);
+  color: var(--GrisOscuro);
+  margin: 0;
+  
+
+}
+.errortitle{
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 600;
+  color: var(--GrisOscuro);
+  margin: 1rem;
+  text-align: center;
+}
+.notfound{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem;
+}
+
 /***************************** MEDIA QUERIES *****************************/
 
 @media (max-width:768px) {
@@ -519,5 +627,16 @@ input {
 
   .direccion {
     margin-top: 0;
+  }
+
+  header{
+    grid-template-columns: 1fr;
+  }
+  .titulo{
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .modal-contenido{
+    margin: 1rem 0 1rem 0;
   }
 }

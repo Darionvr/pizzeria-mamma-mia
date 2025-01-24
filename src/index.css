@@ -1,5 +1,5 @@
 :root {
-  --Naranjo: rgb(199, 61, 40);
+  --Naranjo: rgb(213, 71, 49);
   --NaranjoClaro: rgb(220, 114, 98);
   --Blanco: rgb(238, 230, 200);
   --GrisOscuro: rgb(47, 48, 57);
@@ -44,11 +44,16 @@ main {
   nav {
     flex-direction: column;
     position: relative;
-    padding-bottom: 1rem;
+    
     padding: 1rem 1rem 2rem 1rem;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.5rem;
   }
+
+.profile{
+
+align-self: flex-start;
+}
 
   ul a {
     font-size: .9rem;

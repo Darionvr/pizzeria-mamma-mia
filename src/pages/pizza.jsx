@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import CardPizza from './cardpizza';
+import CardPizza from '../components/cardpizza';
 
 const Pizza = () => {
 
@@ -32,7 +32,7 @@ const Pizza = () => {
           name={descripcion.name}
           price={descripcion.price.toLocaleString('de-DE')}
           ingredients={descripcion.ingredients}
-          img={`public/imgs/${descripcion.name}.jpeg`}
+          img={`/imgs/${descripcion.name}.jpeg`}
           descripcion={descripcion.desc}
           key={descripcion.id}
         />

@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
 
 export const Header = () => {
+
+
     return (
+      
         <header>
             <div className='titulo'>
                 <h1>
@@ -11,7 +15,7 @@ export const Header = () => {
                 <p>Desde $5.950</p>
             </div>
             
-        <img src="public/imgs/Header 2.jpeg" alt=""/>
+        <img src="/imgs/Header 2.jpeg" alt=""/>
            
         </header>
     )

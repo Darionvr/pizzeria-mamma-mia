@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 
 
 export const CardPizza = ({ name, price, ingredients, img, descripcion}) => {
@@ -24,7 +24,9 @@ export const CardPizza = ({ name, price, ingredients, img, descripcion}) => {
                
                 
                 <div className="botones">
-                    <button className="verMas"> Ver más</button>
+
+ <button className="verMas"> Ver más</button> 
+                    
                     <button className="anadir"> Añadir </button>
                 </div>
             </div>
