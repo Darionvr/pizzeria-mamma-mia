@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons'
@@ -7,16 +7,20 @@ import Register from '../pages/register'
 import Login from '../pages/login'
 import { Link } from "react-router-dom"
 import Profile from '../pages/Profile'
+import { CarritoContext } from '../context/CarritoContext'
+
 
 
 export const Nav = () => {
 
-  const carrito = <FontAwesomeIcon icon={faShoppingCart} />
+  const carritoIcon = <FontAwesomeIcon icon={faShoppingCart} />
   const pizza = <FontAwesomeIcon icon={faPizzaSlice} />
   const cruz = <FontAwesomeIcon icon={faXmark} />
+  const {carrito} = useContext(CarritoContext)
 
-  
-  const total = 25000;
+  const total = carrito.reduce((acumulador, items) => acumulador + (items.count * items.price), 0)
+
+
   const token = false;
 
 
@@ -40,7 +44,7 @@ export const Nav = () => {
         </ul>
         <div className='profile'>
           
-         <Link to='/cart'>  <button className='total' > {carrito} ${total.toLocaleString('de-DE')} </button></Link> 
+         <Link to='/cart'>  <button className='total' > {carritoIcon} ${total.toLocaleString('de-DE')} </button></Link> 
           <Profile />
         </div>
       </nav>

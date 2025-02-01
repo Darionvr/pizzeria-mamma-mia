@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Header from '../components/header'
 import CardPizza from '../components/cardpizza'
-
-
+import { CarritoContext } from '../context/CarritoContext'
 
 const Home = () => {
 
-  const [menu, setMenu] = useState([])
-  const [isLoading, setIsLoading] = useState(true);
+  const { menu, isLoading, carrito, setCarrito } = useContext(CarritoContext);
 
+  const onAgregar = (pizza) => {
+    const unaPizzamas = [...carrito]
+    const seleccionada = unaPizzamas.find(el => el.id === pizza.id)
 
-  const getMenu = async () => {
-    const response = await fetch("http://localhost:5000/api/pizzas");
-    const data = await response.json();
-    setMenu(data);
-    setIsLoading(false);
-  };
+    if (!seleccionada) {
+      unaPizzamas.push({ ...pizza, count: 1 });
+    } else {
+      seleccionada.count += 1;
+    }
 
-  useEffect(() => {
-    getMenu();
-  }, []);
-
+    setCarrito(unaPizzamas)
+   
+  }
 
   return (
     <>
-      
-      <Header/>
+
+      <Header />
 
       <main>
         {isLoading ? (<p>Cargando...</p>) : (menu.map(pizza => <CardPizza
@@ -34,6 +33,8 @@ const Home = () => {
           ingredients={pizza.ingredients}
           img={`public/imgs/${pizza.name}.jpeg`}
           key={pizza.id}
+          agregar={() => onAgregar(pizza)}
+
         />))}
 
       </main>

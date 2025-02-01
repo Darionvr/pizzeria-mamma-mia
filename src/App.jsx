@@ -9,61 +9,62 @@ import Register from './pages/register'
 import Login from './pages/login'
 import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
-
+import CarritoProvider from './context/CarritoContext'
 
 function App() {
 
-  
+
   return (
     <>
- <Nav />
+      <CarritoProvider>
+        <Nav />
 
- <Routes>
-  <Route
-  path="/"
-  element={<Home />}
-  />
-   <Route
-  path="/register"
-  element={<Register />}
-  />
- <Route
-  path="/login"
-  element={<Login />}
-  />
-   <Route
-  path="/cart"
-  element={<Cart />}
-  />
- <Route
-  path="/pizza/p001"
-  element={<Pizza />}
-  />
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+          <Route
+            path="/cart"
+            element={<Cart />}
+          />
+          <Route
+            path="/pizza/p001"
+            element={<Pizza />}
+          />
 
-<Route
-  path="/profile"
-  element={<Profile />}
-  />
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
 
-<Route
-  path="/pizza/:id"
-  element={<Pizza/>}
-  />
+          <Route
+            path="/pizza/:id"
+            element={<Pizza />}
+          />
 
-<Route
-  path="/404"
-  element={<NotFound />}
-  />
+          <Route
+            path="/404"
+            element={<NotFound />}
+          />
 
-<Route
-  path="*"
-  element={<NotFound />}
-  />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
 
- </Routes> 
+        </Routes>
 
- <Footer />
-
+        <Footer />
+      </CarritoProvider>
     </>
   )
 
