@@ -44,7 +44,7 @@ const {token} = useContext(UserContext)
 
             <Route
               path="/profile"
-              element={!token ? <Profile /> : <Navigate to="/login"/>}
+              element={token ? <Profile /> : <Navigate to="/login"/>}
             />
 
             <Route

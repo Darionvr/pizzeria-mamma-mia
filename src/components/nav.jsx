@@ -33,7 +33,7 @@ export const Nav = () => {
 
       <nav>
 
-        <p className='logo'> {pizza} Mamma Mía </p>
+        <Link to="/"> <p className='logo'> {pizza} Mamma Mía </p></Link>
 
         <ul>
           <li> <Link to="/"> Home</Link></li>
