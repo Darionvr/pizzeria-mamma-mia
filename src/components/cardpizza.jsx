@@ -1,10 +1,7 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { CarritoContext } from '../context/CarritoContext'
 
 
-
-export const CardPizza = ({ name, price, ingredients, img, descripcion, agregar }) => {
+export const CardPizza = ({ name, price, ingredients, img, descripcion, agregar, verPizza }) => {
 
 
 
@@ -29,7 +26,7 @@ export const CardPizza = ({ name, price, ingredients, img, descripcion, agregar 
 
                 <div className="botones">
 
-                    <button className="verMas"> Ver más</button>
+                    <button className="verMas" onClick={verPizza}> Ver más</button>
 
                     <button className="anadir" onClick={agregar} > Añadir </button>
                 </div>

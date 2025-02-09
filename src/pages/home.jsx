@@ -1,7 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Header from '../components/header'
 import CardPizza from '../components/cardpizza'
 import { CarritoContext } from '../context/CarritoContext'
+import { useNavigate} from 'react-router-dom'
+
 
 const Home = () => {
 
@@ -18,7 +20,15 @@ const Home = () => {
     }
 
     setCarrito(unaPizzamas)
-   
+  }
+
+
+  const navigate = useNavigate();
+ 
+
+  const vistaPizza = (pizza) => {
+    navigate(`/pizza/${pizza.id}`);
+
   }
 
   return (
@@ -31,9 +41,11 @@ const Home = () => {
           name={pizza.name}
           price={pizza.price.toLocaleString('de-DE')}
           ingredients={pizza.ingredients}
-          img={`public/imgs/${pizza.name}.jpeg`}
+          img={`/imgs/${pizza.name}.jpeg`}
           key={pizza.id}
           agregar={() => onAgregar(pizza)}
+          verPizza={() => vistaPizza(pizza)}
+
 
         />))}
 

@@ -4,67 +4,69 @@ import Nav from './components/nav'
 import './App.css'
 import Cart from './pages/cart'
 import Pizza from './pages/pizza'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Register from './pages/register'
 import Login from './pages/login'
 import NotFound from './pages/NotFound'
 import Profile from './pages/Profile'
 import CarritoProvider from './context/CarritoContext'
+import { UserContext } from './context/UserContext'
+import { useContext } from 'react'
 
 function App() {
 
+const {token} = useContext(UserContext)
 
   return (
     <>
-      <CarritoProvider>
-        <Nav />
+      
+        <CarritoProvider>
 
-        <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-          <Route
-            path="/cart"
-            element={<Cart />}
-          />
-          <Route
-            path="/pizza/p001"
-            element={<Pizza />}
-          />
+          <Nav />
 
-          <Route
-            path="/profile"
-            element={<Profile />}
-          />
+          <Routes>
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/register"
+              element={token ? <Navigate to="/"/> : <Register />}
+            />
+            <Route
+              path="/login"
+              element={token ? <Navigate to="/"/> : <Login />}
+            />
+            <Route
+              path="/cart"
+              element={<Cart />}
+            />
 
-          <Route
-            path="/pizza/:id"
-            element={<Pizza />}
-          />
+            <Route
+              path="/profile"
+              element={!token ? <Profile /> : <Navigate to="/login"/>}
+            />
 
-          <Route
-            path="/404"
-            element={<NotFound />}
-          />
+            <Route
+              path="/pizza/:id"
+              element={<Pizza />}
+            />
 
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
+            <Route
+              path="/404"
+              element={<NotFound />}
+            />
 
-        </Routes>
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
 
-        <Footer />
-      </CarritoProvider>
+          </Routes>
+
+          <Footer />
+        </CarritoProvider>
+      
     </>
   )
 

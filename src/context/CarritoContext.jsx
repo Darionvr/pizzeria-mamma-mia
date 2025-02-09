@@ -8,6 +8,8 @@ const CarritoProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
     const [menu, setMenu] = useState([])
     const [isLoading, setIsLoading] = useState(true);
+    
+
 
 
     const getMenu = async () => {
@@ -24,7 +26,7 @@ const CarritoProvider = ({ children }) => {
 
     return (
 
-        <CarritoContext.Provider value={{ carrito, setCarrito, menu, isLoading }}>
+        <CarritoContext.Provider value={{ carrito, setCarrito, menu, isLoading}}>
 
             {children}
 

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
 import { CarritoContext } from '../context/CarritoContext'
+import { UserContext } from '../context/UserContext'
 
 
 
@@ -11,6 +12,7 @@ const Cart = () => {
     const carritoIcon = <FontAwesomeIcon icon={faCartShopping}/>
     const cruz = <FontAwesomeIcon icon={faXmark} />
     const {carrito, setCarrito} = useContext(CarritoContext)
+    const {token} = useContext(UserContext)
 
 
     const agregar = (pizza) => {
@@ -37,7 +39,7 @@ const Cart = () => {
     const total = carrito.reduce((acumulador, items) => acumulador + (items.count * items.price), 0)
 
 
-
+    
     return (
 
         <div className="modal">
@@ -71,8 +73,8 @@ const Cart = () => {
 
                 <div className='totalCart'> <p> Total</p> <p className='totalmonto'> $ {total.toLocaleString('de-DE')} </p></div>
 
-
-                <button className='anadir'> Continuar al pago</button>
+                {token && <button className='anadir'> Continuar al pago</button>}
+                
             </div>}
            
 
