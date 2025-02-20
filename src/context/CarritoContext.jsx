@@ -1,14 +1,17 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "./UserContext";
 
 
 export const CarritoContext = createContext();
 
 const CarritoProvider = ({ children }) => {
 
-    const [carrito, setCarrito] = useState([]);
+    const [cart, setCart] = useState([]);
     const [menu, setMenu] = useState([])
     const [isLoading, setIsLoading] = useState(true);
-    
+    const [isSubmited, setIsSubmited] = useState(false)
+    const { user } = useContext(UserContext)
+
 
 
 
@@ -19,6 +22,30 @@ const CarritoProvider = ({ children }) => {
         setIsLoading(false);
     };
 
+
+    const submitCarrito = async () => {
+
+        const jwtoken = localStorage.getItem("token");
+        if (jwtoken) {
+            const response = await fetch("http://localhost:5000/api/checkouts", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${jwtoken}`,
+                },
+                body: JSON.stringify({
+                    cart: cart,
+                }),
+            });
+            if (response.ok) {
+                setIsSubmited(true);
+            }
+        }
+    };
+
+ 
+
+
     useEffect(() => {
         getMenu();
     }, []);
@@ -26,7 +53,7 @@ const CarritoProvider = ({ children }) => {
 
     return (
 
-        <CarritoContext.Provider value={{ carrito, setCarrito, menu, isLoading}}>
+        <CarritoContext.Provider value={{ cart, setCart, menu, isLoading, submitCarrito, isSubmited, setIsSubmited}}>
 
             {children}
 

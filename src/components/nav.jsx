@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 import Profile from '../pages/Profile'
 import { CarritoContext } from '../context/CarritoContext'
 import { UserContext } from '../context/UserContext'
-
+import { ModalContext } from '../context/ModalContext'
 
 
 export const Nav = () => {
@@ -17,11 +17,11 @@ export const Nav = () => {
   const carritoIcon = <FontAwesomeIcon icon={faShoppingCart} />
   const pizza = <FontAwesomeIcon icon={faPizzaSlice} />
   const cruz = <FontAwesomeIcon icon={faXmark} />
-  const {carrito} = useContext(CarritoContext)
-  const total = carrito.reduce((acumulador, items) => acumulador + (items.count * items.price), 0)
+  const {cart} = useContext(CarritoContext)
+  const total = cart.reduce((acumulador, items) => acumulador + (items.count * items.price), 0)
 
   const {token, Logout} =  useContext(UserContext)
-
+  const {abrirModal} = useContext(ModalContext)
 
 
 
@@ -45,7 +45,7 @@ export const Nav = () => {
         </ul>
        
           
-         <Link to='/cart'>  <button className='total' > {carritoIcon} ${total.toLocaleString('de-DE')} </button></Link> 
+         <button className='total' onClick={abrirModal} > {carritoIcon} ${total.toLocaleString('de-DE')} </button>
           
        
       </nav>

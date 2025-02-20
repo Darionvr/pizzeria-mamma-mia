@@ -1,145 +1,101 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react'
 import { Link } from "react-router-dom"
+import { UserContext } from '../context/UserContext';
 
 const Register = () => {
 
-    const [nombre, setNombre] = useState("")
-    const [contraseña, setContraseña] = useState("")
-    const [reContraseña, setReContraseña] = useState("")
-    const [registrado, setRegistrado] = useState(false)
-    const [error, setError] = useState({ nombre: false, contraseña: false, reContraseña: false })
+    const { email, setEmail, password, setPassword, user, registerUser, token } = useContext(UserContext)
+
+    
+    const [repassword, setRepassword] = useState("")
+    const [error, setError] = useState({ email: false, password: false, repassword: false })
 
     const errorIcon = <FontAwesomeIcon icon={faCircleExclamation} />
     const checkIcon = <FontAwesomeIcon icon={faCircleCheck} />
     const cruz = <FontAwesomeIcon icon={faXmark} />
 
-    
-        const [pantalla, setPantalla] = useState(window.innerWidth)
-    
-        useEffect(() => {
-            const handleTamaño = () => {
-                setPantalla(window.innerWidth0)
-            }
-    
-            window.addEventListener('resize', handleTamaño);
-    
-            return () => {
-                window.removeEventListener('resize', handleTamaño);
-            };
-    
-        }, [])
-    
+
+
 
     const validarInput = (e) => {
         e.preventDefault();
         let errores = {
-            nombre: false,
-            contraseña: false,
-            reContraseña: false
+            email: false,
+            password: false,
+            repassword: false
         };
 
-        if (nombre === '') {
-            errores.nombre = true
-        } if (contraseña === '' || contraseña.length < 6) {
-            errores.contraseña = true
-        } if (contraseña !== reContraseña) {
-            errores.reContraseña = true
-        } if (errores.nombre || errores.contraseña || errores.reContraseña) {
+        if (email === '') {
+            errores.email = true
+        } if (password === '' || password.length < 6) {
+            errores.password = true
+        } if (password !== repassword) {
+            errores.repassword = true
+        } if (errores.email || errores.password || errores.repassword) {
             setError(errores);
+            
         }
         else {
             setError(errores)
-            setNombre('')
-            setContraseña('')
-            setReContraseña('')
-            setRegistrado(true)
+            setRepassword('')
+            registerUser()
         }
     }
 
     return (
 
-<header>
-
-    {pantalla > 768 ? (
-        <> <div >
-           
-            <div className="modal-contenido">
-            <p className='botonCerrarModal' > <Link to='/'> {cruz} </Link> </p>
-                {registrado == true ? (
-                    <>
-                    <p className='checkIcon'>{checkIcon}</p>
-                    <h2 className='registrado'> ¡Gracias por registrarte! <br /> <span style={{fontSize: "1rem"}}> Tu próxima pizza está a solo un click.</span></h2>
-                    </>
-                ) : (
-                    <><h2 className='registrate'>
-                        Regístrate en <br /><span>Mamma Mía</span>
-                    </h2><form noValidate onSubmit={validarInput}>
-                            <div className="validaciones">
-                                <input type="text" placeholder='Nombre' id='nombreInput' value={nombre} required onChange={(e) => setNombre(e.target.value)} />
-                                {error.nombre ? <p className="error"> {errorIcon}</p> : null}
-                                {error.nombre ? <p className="alert" id='nombreAlert'> El nombre no puede estar vacío</p> : null}
-                            </div>
-                            <div className="validaciones">
-                                <input type="password" placeholder='Contraseña' id='contraseñaInput' required value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
-                                {error.contraseña ? <p className="error"> {errorIcon}</p> : null}
-                                {error.contraseña ? <p className="alert" id='contraseñaAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
-                            </div>
-                            <div className="validaciones">
-                                <input type="password" placeholder='Confirma tu Contraseña' id='reContraseña' required value={reContraseña} onChange={(e) => setReContraseña(e.target.value)} />
-                                {error.reContraseña ? <p className="error"> {errorIcon}</p> : null}
-                                {error.reContraseña ? <p className="alert" id='reAlert'> Las contraseñas no coinciden</p> : null}
-                            </div>
-                            <button type='submit' className='registrar'> Registrar </button>
-                        </form>
-                    </>
-                )}
+        <header>
 
 
-            </div>
-
-           
-            </div>
-            
-        <img src="/imgs/Header 2.jpeg" alt=""/></>
-    ) :  <div className="modal-contenido">
-    <p className='botonCerrarModal' > <Link to='/'> {cruz} </Link> </p>
-        {registrado == true ? (
             <>
-            <p className='checkIcon'>{checkIcon}</p>
-            <h2 className='registrado'> ¡Gracias por registrarte! <br /> <span style={{fontSize: "1rem"}}> Tu próxima pizza está a solo un click.</span></h2>
-            </>
-        ) : (
-            <><h2 className='registrate'>
-                Regístrate en <br /><span>Mamma Mía</span>
-            </h2><form noValidate onSubmit={validarInput}>
-                    <div className="validaciones">
-                        <input type="text" placeholder='Nombre' id='nombreInput' value={nombre} required onChange={(e) => setNombre(e.target.value)} />
-                        {error.nombre ? <p className="error"> {errorIcon}</p> : null}
-                        {error.nombre ? <p className="alert" id='nombreAlert'> El nombre no puede estar vacío</p> : null}
-                    </div>
-                    <div className="validaciones">
-                        <input type="password" placeholder='Contraseña' id='contraseñaInput' required value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
-                        {error.contraseña ? <p className="error"> {errorIcon}</p> : null}
-                        {error.contraseña ? <p className="alert" id='contraseñaAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
-                    </div>
-                    <div className="validaciones">
-                        <input type="password" placeholder='Confirma tu Contraseña' id='reContraseña' required value={reContraseña} onChange={(e) => setReContraseña(e.target.value)} />
-                        {error.reContraseña ? <p className="error"> {errorIcon}</p> : null}
-                        {error.reContraseña ? <p className="alert" id='reAlert'> Las contraseñas no coinciden</p> : null}
-                    </div>
-                    <button type='submit' className='registrar'> Registrar </button>
-                </form>
-            </>
-        )}
+                <div >
+
+                    <div className="modal-contenido">
+                        <p className='botonCerrarModal' > <Link to='/'> {cruz} </Link> </p>
+                        {token ? (
+                            <>
+                                <p className='checkIcon'>{checkIcon}</p>
+                                <h2 className='registrado'> ¡Gracias por registrarte! <br /> <span style={{ fontSize: "1rem" }}> Tu próxima pizza está a solo un click.</span></h2>
+                            </>
+                        ) : (
+                            <><h2 className='registrate'>
+                                Regístrate en <br /><span>Mamma Mía</span>
+                            </h2><form noValidate onSubmit={validarInput}>
+                                    <div className="validaciones">
+                                        <input type="text" placeholder='Tu correo' id='emailInput' value={email} required onChange={(e) => setEmail(e.target.value)} />
+                                        {error.email ? <p className="error"> {errorIcon}</p> : null}
+                                        {error.email ? <p className="alert" id='emailAlert'> El email no puede estar vacío</p> : null}
+                                    </div>
+                                    <div className="validaciones">
+                                        <input type="password" placeholder='Tu contraseña' id='passwordInput' required value={password} onChange={(e) => setPassword(e.target.value)} />
+                                        {error.password ? <p className="error"> {errorIcon}</p> : null}
+                                        {error.password ? <p className="alert" id='passwordAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
+                                    </div>
+                                    <div className="validaciones">
+                                        <input type="password" placeholder='Confirma tu contraseña' id='repassword' required value={repassword} onChange={(e) => setRepassword(e.target.value)} />
+                                        {error.repassword ? <p className="error"> {errorIcon}</p> : null}
+                                        {error.repassword ? <p className="alert" id='reAlert'> Las passwords no coinciden</p> : null}
+                                    </div>
+                                    <button type='submit' className='registrar'> Registrar </button>
+                                </form>
+                            </>
+                        )}
 
 
-    </div>}
-            
-           
+                    </div>
+
+
+                </div>
+
+                <img src="/imgs/Header 2.jpeg" alt="" />
+            </>
+
+
+
         </header>
 
     )

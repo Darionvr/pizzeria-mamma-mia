@@ -81,15 +81,15 @@ nav a:hover {
 /***************************** BOTÓN TOTAL *****************************/
 .total {
 
-  justify-self: flex-end;
-  padding: 1rem 2rem;
+
+  padding: 0rem 1.5rem;
   border-radius: 50px;
   font-family: Roboto;
   font-weight: 800;
   border: none;
   background-color: var(--Naranjo);
   box-shadow: -4px 5px 0px rgba(107, 32, 21, 0.353);
-  height: 4rem;
+  height: 3.5rem;
   color: var(--Blanco);
 
 }
@@ -114,8 +114,7 @@ nav a:hover {
   background-color: white;
   padding: 1.5rem;
   border-radius: 15px;
-  min-width: 200px;
-  max-width: 300px;
+  max-width: 250px;
   box-shadow: -4px 5px 0px rgba(186, 126, 116, 0.353);
 
 
@@ -147,6 +146,7 @@ nav a:hover {
 
 .ingredientes {
   color: var(--Grismedio);
+  font-size: .8rem;
   text-transform: capitalize;
   padding: .5rem;
   flex-wrap: wrap;
@@ -167,7 +167,7 @@ nav a:hover {
   font-family: Roboto;
   font-size: 1rem;
   font-weight: 700;
-  padding: .8rem 2.5rem;
+  padding: .8rem 1rem;
   border-radius: 25px;
 }
 
@@ -202,17 +202,17 @@ nav a:hover {
   padding: 1.5rem;
   border-radius: 15px;
   box-shadow: -4px 5px 0px rgba(186, 126, 116, 0.353);
- display: flex;
- justify-content: center;
- width: min-content;
- place-self: center;
- margin: 5rem;
+  display: flex;
+  justify-content: center;
+  width: min-content;
+  place-self: center;
+  margin: 5rem;
 
 }
 
-.pizzainfo img{
-  
-  
+.pizzainfo img {
+
+
   width: 300px;
   margin: 2rem;
   border-radius: 15px;
@@ -288,7 +288,7 @@ nav a:hover {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow: hidden;
 
 
 }
@@ -312,10 +312,19 @@ nav a:hover {
 
 }
 
+.cart {
+  max-height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+body.modal-open {
+  overflow-y: hidden;
+}
+
+
 /***************************** REGISTER Y LOGIN  *****************************/
 
-
-.modalHeader {}
 
 
 /***************************** FORM *****************************/
@@ -466,7 +475,8 @@ input {
   font-size: 2rem;
   font-weight: 600;
   color: var(--Naranjo);
-  margin: .8rem 0 .8rem 0;
+  margin: 1rem 0 .8rem 0;
+  text-align: center;
 
 }
 
@@ -557,32 +567,54 @@ input {
 
 }
 
+.compralista{
+  width: 300px;
+  border-radius: 15px;
+}
+.gracias{
+  font-family: Oswald;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--Naranjo);
+  text-align: center;
+}
+.pronto{
+  color: var(--GrisOscuro);
+  text-align: center;
+}
 /***************************** Profile  *****************************/
 .profile {
   display: flex;
   margin-left: 1rem;
   align-items: center;
   place-self: center;
-  margin: 3rem;
+  margin: 2rem;
+  background-color: var(--Blanco);
+  padding: 5rem;
+  border-radius: 15px;
+  gap: 2rem;
+  box-shadow: -4px 5px 0px rgba(224, 183, 176, 0.353);
 }
 
 
 .logeado {
   display: flex;
   flex-direction: column;
-
-
-}
-
-.logeado p {
-  margin: 0;
+  color: var(--GrisOscuro);
   font-size: .9rem;
-
 }
 
+
+.tuPerfil{
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 1.5rem;
+  text-align: center;
+}
 .correo {
   font-weight: 600;
-  color: white;
+  color: var(--Naranjo);
+  margin: 0;
 }
 
 .cerrarSesion {
@@ -676,8 +708,10 @@ input {
   .modal-contenido {
     margin: 1rem 0 1rem 0;
   }
+
   .pizzainfo {
 
     flex-direction: column;
   }
+
 }

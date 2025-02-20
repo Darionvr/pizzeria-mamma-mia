@@ -7,10 +7,10 @@ import { useNavigate} from 'react-router-dom'
 
 const Home = () => {
 
-  const { menu, isLoading, carrito, setCarrito } = useContext(CarritoContext);
+  const { menu, isLoading, cart, setCart } = useContext(CarritoContext);
 
   const onAgregar = (pizza) => {
-    const unaPizzamas = [...carrito]
+    const unaPizzamas = [...cart]
     const seleccionada = unaPizzamas.find(el => el.id === pizza.id)
 
     if (!seleccionada) {
@@ -19,7 +19,7 @@ const Home = () => {
       seleccionada.count += 1;
     }
 
-    setCarrito(unaPizzamas)
+    setCart(unaPizzamas)
   }
 
 

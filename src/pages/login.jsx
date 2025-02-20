@@ -1,135 +1,64 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleExclamation, faXmark, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom"
-
+import { UserContext,} from '../context/UserContext';
 
 const Login = () => {
+    const { email, setEmail, password, setPassword, user, submitUser, token} = useContext(UserContext)
+    const [error, setError] = useState({ email: false, password: false })
 
-    const [nombre, setNombre] = useState("")
-    const [contraseña, setContraseña] = useState("")
-    const [error, setError] = useState({ nombre: false, contraseña: false })
-    const [logeado, setLogeado] = useState(false)
-
-
+    
     const errorIcon = <FontAwesomeIcon icon={faCircleExclamation} />
     const checkIcon = <FontAwesomeIcon icon={faCircleCheck} />
     const cruz = <FontAwesomeIcon icon={faXmark} />
 
-
-    const [pantalla, setPantalla] = useState(window.innerWidth)
-
-    useEffect(() => {
-        const handleTamaño = () => {
-            setPantalla(window.innerWidth0)
-        }
-
-        window.addEventListener('resize', handleTamaño);
-
-        return () => {
-            window.removeEventListener('resize', handleTamaño);
-        };
-
-    }, [])
-
-
     const validarInput = (e) => {
-
         e.preventDefault();
         let errores = {
-            nombre: false,
-            contraseña: false,
-        }
-        if (nombre === '') {
-            errores.nombre = true
-        } if (contraseña === '' || contraseña.length < 6) {
-            errores.contraseña = true
-        } if (errores.nombre || errores.contraseña) {
-            setError(errores);
-        } else {
-            setError(errores)
-            setNombre('')
-            setContraseña('')
-            setLogeado(true)
+            email: email === '',
+            password: password === '' || password.length < 6
+        };
+        setError(errores);
+        if (!errores.email && !errores.password) {
+            submitUser()
         }
     }
 
     return (
-
-
-
         <header>
-
-            {pantalla > 768 ? (
-                <>
-                    <div >
-
-
-                        <div className="modal-contenido">
-                            <p className='botonCerrarModal' > <Link to='/'> {cruz} </Link> </p>
-                            {logeado == true ? (
-                                <>
-                                    <p className='checkIcon'>{checkIcon}</p>
-                                    <h2 className='registrado'> ¡Bienvenido de nuevo! <br /> <span style={{ fontSize: "1rem" }}> El horno ya está listo y esperando tu pedido.</span></h2>
-                                </>
-                            ) : (
-                                <>
-                                    <h2 className='registrate'>
-                                        Inicia sesión en <br /><span>Mamma Mía</span>
-                                    </h2><form noValidate onSubmit={validarInput}>
-                                        <div className="validaciones">
-                                            <input type="text" placeholder='Nombre de usuario' id='nombreInput' value={nombre} required onChange={(e) => setNombre(e.target.value)} />
-                                            {error.nombre ? <p className="error"> {errorIcon}</p> : null}
-                                            {error.nombre ? <p className="alert" id='nombreAlert'> El nombre no puede estar vacío</p> : null}
-                                        </div>
-                                        <div className="validaciones">
-                                            <input type="password" placeholder='Contraseña' id='contraseñaInput' required value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
-                                            {error.contraseña ? <p className="error"> {errorIcon}</p> : null}
-                                            {error.contraseña ? <p className="alert" id='contraseñaAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
-                                        </div>
-                                        <button type='submit' className='registrar'> Iniciar Sesión </button>
-                                    </form>
-                                </>
-                            )}
-
-                        </div>
-                    </div>
-
-                    <img src="/imgs/Header 2.jpeg" alt="" /> </>) :
-
+            <div>
                 <div className="modal-contenido">
-                    <p className='botonCerrarModal' > <Link to='/'> {cruz} </Link> </p>
-                    {logeado == true ? (
+                    <p className='botonCerrarModal'><Link to='/'> {cruz} </Link></p>
+                    {token ? (
                         <>
                             <p className='checkIcon'>{checkIcon}</p>
-                            <h2 className='registrado'> ¡Bienvenido de nuevo! <br /> <span style={{ fontSize: "1rem" }}> El horno ya está listo y esperando tu pedido.</span></h2>
+                            <h2 className='registrado'> ¡Bienvenido de nuevo! {user.email} <br /><span style={{ fontSize: "1rem" }}> El horno ya está listo y esperando tu pedido.</span></h2>
                         </>
                     ) : (
                         <>
                             <h2 className='registrate'>
                                 Inicia sesión en <br /><span>Mamma Mía</span>
-                            </h2><form noValidate onSubmit={validarInput}>
+                            </h2>
+                            <form noValidate onSubmit={validarInput}>
                                 <div className="validaciones">
-                                    <input type="text" placeholder='Nombre de usuario' id='nombreInput' value={nombre} required onChange={(e) => setNombre(e.target.value)} />
-                                    {error.nombre ? <p className="error"> {errorIcon}</p> : null}
-                                    {error.nombre ? <p className="alert" id='nombreAlert'> El nombre no puede estar vacío</p> : null}
+                                    <input type="text" placeholder='email de usuario' id='emailInput' value={email} required onChange={(e) => setEmail(e.target.value)} />
+                                    {error.email ? <p className="error">{errorIcon}</p> : null}
+                                    {error.email ? <p className="alert" id='emailAlert'> El email no puede estar vacío</p> : null}
                                 </div>
                                 <div className="validaciones">
-                                    <input type="password" placeholder='Contraseña' id='contraseñaInput' required value={contraseña} onChange={(e) => setContraseña(e.target.value)} />
-                                    {error.contraseña ? <p className="error"> {errorIcon}</p> : null}
-                                    {error.contraseña ? <p className="alert" id='contraseñaAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
+                                    <input type="password" placeholder='Contraseña' id='passwordInput' required value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    {error.password ? <p className="error">{errorIcon}</p> : null}
+                                    {error.password ? <p className="alert" id='passwordAlert'> La contraseña debe tener al menos 6 caracteres</p> : null}
                                 </div>
                                 <button type='submit' className='registrar'> Iniciar Sesión </button>
                             </form>
                         </>
                     )}
-
-                </div>}
-
+                </div>
+            </div>
+            <img src="/imgs/Header 2.jpeg" alt="" />
         </header>
-
-
     )
 }
 

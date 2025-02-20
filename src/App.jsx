@@ -12,61 +12,62 @@ import Profile from './pages/Profile'
 import CarritoProvider from './context/CarritoContext'
 import { UserContext } from './context/UserContext'
 import { useContext } from 'react'
+import ModalProvider, { ModalContext } from './context/ModalContext'
 
 function App() {
 
-const {token} = useContext(UserContext)
+  const { token } = useContext(UserContext)
+  const { handleModal} = useContext(ModalContext)
+
 
   return (
     <>
-      
-        <CarritoProvider>
 
+      <CarritoProvider>
+
+        
           <Nav />
+          {handleModal && <Cart />}
+        
+        <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
 
-          <Routes>
-            <Route
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/register"
-              element={token ? <Navigate to="/"/> : <Register />}
-            />
-            <Route
-              path="/login"
-              element={token ? <Navigate to="/"/> : <Login />}
-            />
-            <Route
-              path="/cart"
-              element={<Cart />}
-            />
+          <Route
+            path="/profile"
+            element={token ? <Profile /> : <Navigate to="/login" />}
+          />
 
-            <Route
-              path="/profile"
-              element={token ? <Profile /> : <Navigate to="/login"/>}
-            />
+          <Route
+            path="/pizza/:id"
+            element={<Pizza />}
+          />
 
-            <Route
-              path="/pizza/:id"
-              element={<Pizza />}
-            />
+          <Route
+            path="/404"
+            element={<NotFound />}
+          />
 
-            <Route
-              path="/404"
-              element={<NotFound />}
-            />
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
 
-            <Route
-              path="*"
-              element={<NotFound />}
-            />
+        </Routes>
 
-          </Routes>
+        <Footer />
+      </CarritoProvider>
 
-          <Footer />
-        </CarritoProvider>
-      
     </>
   )
 
